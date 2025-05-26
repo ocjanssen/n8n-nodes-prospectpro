@@ -1,0 +1,6 @@
+ignoredBuiltDependencies:
+  - eslint-plugin-n8n-nodes-base
+
+overrides:
+  nodes: link:nodes
+  n8n-nodes-bedrijfsdata: 'link:'
