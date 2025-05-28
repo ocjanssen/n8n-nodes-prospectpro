@@ -1,15 +1,21 @@
 {
   "name": "n8n-nodes-bedrijfsdata",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n node for Bedrijfsdata.nl API - Search and retrieve Dutch company information",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "bedrijfsdata",
+    "dutch-companies",
+    "company-data",
+    "netherlands",
+    "business-intelligence",
+    "api-integration"
   ],
-  "license": "UNLICENSED",
-  "homepage": "",
+  "license": "MIT",
+  "homepage": "https://github.com/OohBen/n8n-bedrijfsdata-custom-node#readme",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Ben Goihman",
+    "email": "ben@example.com"
   },
   "repository": {
     "type": "git",
@@ -49,6 +55,5 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
-  },
-  "dependencies": {}
+  }
 }

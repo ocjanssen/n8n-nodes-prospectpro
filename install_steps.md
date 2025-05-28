@@ -48,3 +48,5 @@
    ```bash
    pnpm exec n8n start
    ```
+
+	 <!-- pnpm add n8n -->
