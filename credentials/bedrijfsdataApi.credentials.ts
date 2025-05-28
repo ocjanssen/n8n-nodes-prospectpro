@@ -1,17 +1,19 @@
 import {
 	IAuthenticateGeneric,
+	Icon,
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
 
 export class bedrijfsdataApi implements ICredentialType {
+	icon = 'file:logo.svg' as Icon;
 	name = 'bedrijfsdataApi';
 	displayName = 'Bedrijfsdata API';
 	documentationUrl = 'https://docs.bedrijfsdata.nl/';
 	properties: INodeProperties[] = [
 		{
-			displayName: 'APIs Key',
+			displayName: 'API Key',
 			name: 'apiKey',
 			type: 'string',
 			typeOptions: {

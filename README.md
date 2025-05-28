@@ -17,6 +17,21 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 3. Enter `n8n-nodes-bedrijfsdata`
 4. Agree to the risks and select **Install**
 
+### Docker (Quick Start)
+
+Run n8n with the Bedrijfsdata node pre-installed:
+
+```bash
+./run.sh
+```
+
+Then access n8n at http://localhost:5678
+
+To update the node after making changes:
+```bash
+npm run build && docker-compose restart
+```
+
 ### Manual Installation
 
 To get started:
