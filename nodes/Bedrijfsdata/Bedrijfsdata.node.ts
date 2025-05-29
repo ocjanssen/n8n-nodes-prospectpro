@@ -59,6 +59,9 @@ export class Bedrijfsdata implements INodeType {
 							request: {
 								method: 'GET',
 								url: '/companies',
+								qs: {
+									front: 30,
+								},
 							},
 						},
 					},

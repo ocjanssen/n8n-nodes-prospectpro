@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "🔨 Building custom node..."
-pnpm run build
+npm install
+npm run build
 
 # Check if container is already running
 if [ "$(docker-compose ps -q n8n)" ]; then
