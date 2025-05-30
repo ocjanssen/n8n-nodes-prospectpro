@@ -411,8 +411,21 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 			{
 				displayName: 'Province',
 				name: 'province',
-				type: 'string',
-				default: '',
+				type: 'resourceLocator',
+				default: { mode: 'list', value: '' },
+				modes: [
+					{
+						displayName: 'From List',
+						name: 'list',
+						type: 'list',
+						placeholder: 'Search for a province',
+						typeOptions: {
+							searchListMethod: 'getProvinces',
+							searchable: true,
+							searchFilterRequired: true,
+						},
+					},
+				],
 				routing: {
 					request: {
 						qs: {

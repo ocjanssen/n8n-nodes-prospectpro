@@ -116,6 +116,38 @@ export class Bedrijfsdata implements INodeType {
                 throw new NodeOperationError(this.getNode(), `Error fetching cities: ${message}`);
             }
         },
+        async getProvinces(this: ILoadOptionsFunctions, query?: string): Promise<INodeListSearchResult> {
+            try {
+                type SuggestApiResponse = {
+                    status: string;
+                    found: number;
+                    suggest: Array<{ term: string }>;
+                    message?: string;
+                };
+
+                const response = await apiRequest.call(this, 'GET', 'suggest', {}, {
+                    type: 'province',
+                    q: query,
+                }) as SuggestApiResponse;
+                if (response && response.status === 'ok' && Array.isArray(response.suggest)) {
+                    return {
+                        results: response.suggest.map(item => ({
+                            name: item.term,
+                            value: item.term,
+                        })),
+                    };
+                } else {
+                    const errorMessage = response?.message || 'Unexpected API response from /suggest endpoint';
+                    throw new NodeOperationError(this.getNode(), `Failed to fetch provinces: ${errorMessage}`);
+                }
+            } catch (error) {
+                if (error instanceof NodeOperationError) {
+                    throw error;
+                }
+                const message = (error as Error).message || 'Unknown error during API request';
+                throw new NodeOperationError(this.getNode(), `Error fetching provinces: ${message}`);
+            }
+        },
     },
 };
 }
