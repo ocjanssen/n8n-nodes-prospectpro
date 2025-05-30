@@ -225,6 +225,12 @@ To test the node locally:
 3. In your n8n directory: `npm link n8n-nodes-bedrijfsdata`
 4. Start n8n: `n8n start`
 
+OR
+
+```bash
+./run.sh
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

@@ -34,7 +34,12 @@ export class bedrijfsdataApi implements ICredentialType {
 		request: {
 			baseURL: 'https://api.bedrijfsdata.nl/v1.1',
 			method: 'GET',
-			url: '/companies?country=nl&rows=0',
+			url: '/companies',
+			qs: {
+				country: 'nl',
+				rows: 0,
+				front: 30,
+			}
 		},
 	};
 }

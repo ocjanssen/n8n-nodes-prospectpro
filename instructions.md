@@ -18,3 +18,10 @@ That's it! Open http://localhost:5678 to use your Bedrijfsdata node.
 ./run.sh
 ```
 (The script rebuilds and restarts automatically)
+
+## Publishing:
+Once repo is transferred to you:
+```bash
+npm version patch
+npm publish
+```

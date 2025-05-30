@@ -17,10 +17,24 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 			request: {
 				qs: {
 					country: '={{ $value }}',
+					front: 30,
 				},
 			},
 		},
 		required: true,
+	},
+	{
+		displayName: 'Simplify',
+    name: 'simplify',
+    type: 'boolean',
+    default: true,
+    description: 'Whether to return a simplified version of the response instead of the raw data',
+    displayOptions: {
+        show: {
+            resource: ['foundation'],
+            operation: ['get'],
+        },
+    },
 	},
 	{
 		displayName: 'Additional Fields',
@@ -520,7 +534,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				description: 'Search by industry SBI-code. Use numerical codes without dots (e.g., "01303"). Comma separate multiple values',
+				description: 'Search by industry SBI-code. Use numerical codes without dots (e.g., "01303, 01304"). Comma separate multiple values',
 			},
 			{
 				displayName: 'Social Exists',

@@ -59,10 +59,10 @@ export class Bedrijfsdata implements INodeType {
 				},
 				options: [
 					{
-						name: 'Get Companies',
+						name: 'Get Many',
 						value: 'get',
-						action: 'Get companies',
-						description: 'Get companies from Bedrijfsdata API',
+						action: 'Search companies',
+						description: 'Retrieve companies with advanced filtering options',
 						routing: {
 							request: {
 								method: 'GET',
