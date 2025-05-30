@@ -22,6 +22,6 @@ That's it! Open http://localhost:5678 to use your Bedrijfsdata node.
 ## Publishing:
 Once repo is transferred to you:
 ```bash
-npm version patch
+npm login
 npm publish
 ```
