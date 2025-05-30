@@ -48,7 +48,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by Dutch address. Format: NL{postcode}-{house number}, e.g., "NL1234AB-150".',
+				description: 'Search companies by Dutch address. Format: NL{postcode}-{house number}, e.g., "NL1234AB-150".',
 			},
 			{
 				displayName: 'All Names',
@@ -62,7 +62,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by all known names, such as trade names.',
+				description: 'Search companies by all known names, such as trade names',
 			},
 			{
 				displayName: 'Apps',
@@ -76,7 +76,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by apps they use. Comma separate multiple values.',
+				description: 'Search companies by apps they use. Comma separate multiple values.',
 			},
 			{
 				displayName: 'Chamber of Commerce Number',
@@ -90,7 +90,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Chamber of Commerce number of a specific company.',
+				description: 'Chamber of Commerce number of a specific company',
 			},
 			{
 				displayName: 'City',
@@ -117,7 +117,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by Dutch city. Must exact-match the official name (case sensitive).',
+				description: 'Search companies by Dutch city. Must exact-match the official name (case sensitive).',
 			},
 			{
 				displayName: 'Company ID',
@@ -131,7 +131,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Bedrijfsdata.nl ID of a specific company. IDs are persistent and perfect for use as unique identifiers.',
+				description: 'Bedrijfsdata.nl ID of a specific company. IDs are persistent and perfect for use as unique identifiers.',
 			},
 			{
 				displayName: 'Company Name',
@@ -145,7 +145,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by official name.',
+				description: 'Search companies by official name',
 			},
 			{
 				displayName: 'Crux Rank',
@@ -160,7 +160,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by Crux rank (1 to 50m). Format: Range (100:500), Minimum only (100:), Maximum only (:500)',
+				description: 'Search by Crux rank (1 to 50m). Format: Range (100:500), Minimum only (100:), Maximum only (:500).',
 			},
 			{
 				displayName: 'Data Exists',
@@ -184,7 +184,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by available data types.',
+				description: 'Search companies by available data types',
 			},
 			{
 				displayName: 'Distance (Km)',
@@ -198,7 +198,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Number of kilometers around "location" or "geo" to search. Cannot be combined with city/province/addressid.',
+				description: 'Number of kilometers around "location" or "geo" to search. Cannot be combined with city/province/addressid.',
 			},
 			{
 				displayName: 'Domain',
@@ -212,7 +212,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by domain name.',
+				description: 'Search companies by domain name',
 			},
 			{
 				displayName: 'Employees',
@@ -227,7 +227,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by number of employees. Format: Range (5:10), Minimum only (5:), Maximum only (:10)',
+				description: 'Search by number of employees. Format: Range (5:10), Minimum only (5:), Maximum only (:10).',
 			},
 			{
 				displayName: 'Founded',
@@ -242,7 +242,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by year of establishment. Format: Range (2010:2020), Minimum only (2010:), Maximum only (:2020)',
+				description: 'Search by year of establishment. Format: Range (2010:2020), Minimum only (2010:), Maximum only (:2020).',
 			},
 			{
 				displayName: 'Geo Coordinates',
@@ -257,7 +257,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by coordinates [lat],[long]. Combine with "distance". Alternative to location.',
+				description: 'Search companies by coordinates [lat],[long]. Combine with "distance". Alternative to location',
 			},
 			{
 				displayName: 'Link Domain',
@@ -271,7 +271,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by domains they link to on their website. Powerful for finding partners.',
+				description: 'Search companies by domains they link to on their website. Powerful for finding partners.',
 			},
 			{
 				displayName: 'Linked By',
@@ -285,7 +285,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by domains that link to their website. Powerful for finding partners of large companies.',
+				description: 'Search companies by domains that link to their website. Powerful for finding partners of large companies.',
 			},
 			{
 				displayName: 'Location',
@@ -299,7 +299,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies in an area by city/municipality. Combine with "distance". Alternative to city/province/addressid.',
+				description: 'Search companies in an area by city/municipality. Combine with "distance". Alternative to city/province/addressid',
 			},
 			{
 				displayName: 'Mentioned By',
@@ -313,7 +313,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by domains that mention their company name. Powerful for finding partners.',
+				description: 'Search companies by domains that mention their company name. Powerful for finding partners.',
 			},
 			{
 				displayName: 'Monthly Visits',
@@ -328,7 +328,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by estimated website visitors. Format: Range (100:5000), Minimum only (100:), Maximum only (:5000)',
+				description: 'Search by estimated website visitors. Format: Range (100:5000), Minimum only (100:), Maximum only (:5000).',
 			},
 			{
 				displayName: 'Office Type',
@@ -346,7 +346,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by registration type. Values are case sensitive.',
+				description: 'Search companies by registration type. Values are case sensitive.',
 			},
 			{
 				displayName: 'Organization Type',
@@ -377,7 +377,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by organisation type. Values are case sensitive.',
+				description: 'Search companies by organisation type. Values are case sensitive.',
 			},
 			{
 				displayName: 'PageRank',
@@ -392,7 +392,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by DomCop pagerank (0-10). Format: Range (1:10), Minimum only (1:), Maximum only (:10)',
+				description: 'Search by DomCop pagerank (0-10). Format: Range (1:10), Minimum only (1:), Maximum only (:10).',
 			},
 			{
 				displayName: 'Postcode',
@@ -406,7 +406,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by Dutch postcode.',
+				description: 'Search companies by Dutch postcode',
 			},
 			{
 				displayName: 'Province',
@@ -433,7 +433,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by Dutch province. Must match official name (case sensitive).',
+				description: 'Search companies by Dutch province. Must match official name (case sensitive).',
 			},
 			{
 				displayName: 'Rating',
@@ -448,7 +448,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by avg. review rating (0-5). Format: Range (3:4), Minimum only (3:), Maximum only (:4)',
+				description: 'Search by average review rating (0-5). Format: Range (3:4), Minimum only (3:), Maximum only (:4).',
 			},
 			{
 				displayName: 'Relation',
@@ -462,7 +462,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Combination of linked_by, mentioned_by and linkdomain.',
+				description: 'Combination of linked_by, mentioned_by and linkdomain',
 			},
 			{
 				displayName: 'Revenue',
@@ -477,7 +477,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by annual revenue. Format: Range (500000:1000000), Minimum only (500000:), Maximum only (:1000000)',
+				description: 'Search by annual revenue. Format: Range (500000:1000000), Minimum only (500000:), Maximum only (:1000000).',
 			},
 			{
 				displayName: 'Reviews',
@@ -492,7 +492,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by number of reviews. Format: Range (50:100), Minimum only (50:), Maximum only (:100)',
+				description: 'Search by number of reviews. Format: Range (50:100), Minimum only (50:), Maximum only (:100).',
 			},
 			{
 				displayName: 'Rows',
@@ -506,7 +506,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Amount of companies to return.',
+				description: 'Amount of companies to return',
 			},
 			{
 				displayName: 'SBI Code',
@@ -520,7 +520,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by industry SBI-code. Use numerical codes without dots (e.g., "01303"). Comma separate multiple values.',
+				description: 'Search by industry SBI-code. Use numerical codes without dots (e.g., "01303"). Comma separate multiple values',
 			},
 			{
 				displayName: 'Social Exists',
@@ -542,7 +542,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by social media channels they have.',
+				description: 'Search companies by social media channels they have',
 			},
 			{
 				displayName: 'Social Interactions',
@@ -557,7 +557,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by Social Media likes received. Format: Range (10:50), Minimum only (10:), Maximum only (:50)',
+				description: 'Search by Social Media likes received. Format: Range (10:50), Minimum only (10:), Maximum only (:50).',
 			},
 			{
 				displayName: 'Text',
@@ -571,7 +571,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by keyword. Companies with matching industries, activities, names and website content are returned. Complex queries are available through Solr operators, such as "OR", "AND", "(", ")", etc. See Utilities -> "suggest" for auto suggest.',
+				description: 'Search companies by keyword. Companies with matching industries, activities, names and website content are returned. Complex queries are available through Solr operators, such as "OR", "AND", "(", ")", etc. See Utilities -> "suggest" for auto suggest',
 			},
 			{
 				displayName: 'Tranco Rank',
@@ -586,7 +586,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search by Tranco rank (1 to 3m). Format: Range (100:500), Minimum only (100:), Maximum only (:500)',
+				description: 'Search by Tranco rank (1 to 3m). Format: Range (100:500), Minimum only (100:), Maximum only (:500).',
 			},
 			{
 				displayName: 'VAT Number',
@@ -600,7 +600,7 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 						},
 					},
 				},
-				hint: 'Search companies by tax registration number (btw nummer).',
+				description: 'Search companies by tax registration number (btw nummer)',
 			},
 		],
 	},
