@@ -95,8 +95,21 @@ export const foundationGetOperationProperties: INodeProperties[] = [
 			{
 				displayName: 'City',
 				name: 'city',
-				type: 'string',
-				default: '',
+				type: 'resourceLocator',
+				default: { mode: 'list', value: '' },
+				modes: [
+					{
+						displayName: 'From List',
+						name: 'list',
+						type: 'list',
+						placeholder: 'Search for a city',
+						typeOptions: {
+							searchListMethod: 'getCities',
+							searchable: true,
+							searchFilterRequired: true,
+						},
+					},
+				],
 				routing: {
 					request: {
 						qs: {
