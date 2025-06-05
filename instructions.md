@@ -1,4 +1,4 @@
-# n8n Bedrijfsdata Node - Installation
+# n8n ProspectPro Node - Installation
 
 ## If switching from pnpm (first time only):
 ```bash
@@ -11,7 +11,7 @@ rm -rf .pnpm-store node_modules dist/
 ./run.sh
 ```
 
-That's it! Open http://localhost:5678 to use your Bedrijfsdata node.
+That's it! Open http://localhost:5679 to use your ProspectPro node.
 
 ## Making changes:
 ```bash

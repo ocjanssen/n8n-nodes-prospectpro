@@ -1,8 +1,8 @@
-# n8n-nodes-bedrijfsdata
+# n8n-nodes-prospectpro
 
 ![n8n.io - Workflow Automation](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png)
 
-An n8n community node for integrating with the [Bedrijfsdata.nl API](https://docs.bedrijfsdata.nl/). This node allows you to search and retrieve comprehensive Dutch company information directly within your n8n workflows.
+An n8n community node for integrating with the [ProspectPro API](https://docs.prospectpro.nl/). This node allows you to manage and retrieve prospect, contact, pageview, and event data directly within your n8n workflows.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
@@ -14,18 +14,18 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 1. Go to **Settings > Community Nodes** in your n8n instance
 2. Select **Install**
-3. Enter `n8n-nodes-bedrijfsdata`
+3. Enter `n8n-nodes-prospectpro`
 4. Agree to the risks and select **Install**
 
 ### Docker (Quick Start)
 
-Run n8n with the Bedrijfsdata node pre-installed:
+Run n8n with the ProspectPro node pre-installed:
 
 ```bash
 ./run.sh
 ```
 
-Then access n8n at http://localhost:5678
+Then access n8n at http://localhost:5679
 
 To update the node after making changes:
 ```bash
@@ -37,148 +37,141 @@ npm run build && docker-compose restart
 To get started:
 
 ```bash
-npm install n8n-nodes-bedrijfsdata
+npm install n8n-nodes-prospectpro
 ```
 
 ## Credentials
 
-You need a Bedrijfsdata.nl API key to use this node:
+You need a ProspectPro API key to use this node:
 
-1. Sign up at [Bedrijfsdata.nl](https://bedrijfsdata.nl/)
+1. Sign up at [ProspectPro](https://www.prospectpro.nl/)
 2. Get your API key from your account dashboard
-3. In n8n, create new credentials of type "Bedrijfsdata API"
+3. In n8n, create new credentials of type "ProspectPro API"
 4. Enter your API key
 
 ## Supported Operations
 
-### Foundation Resource
+### Prospects Resource
 
-#### Get Companies
-Search and retrieve Dutch company information with extensive filtering options:
+#### Get Prospect
+Retrieve a single prospect from ProspectPro.
 
-**Basic Search Parameters:**
-- **Country**: Netherlands (required)
-- **Text**: Keyword search across company names, industries, activities, and website content
+#### Get Many Prospects
+Search and retrieve multiple prospects with filtering options.
 
-**Company Identification:**
-- **Company ID**: Bedrijfsdata.nl unique identifier
-- **Company Name**: Official company name
-- **All Names**: Search across all known names including trade names
-- **Chamber of Commerce Number**: KvK number
-- **VAT Number**: BTW number
-- **Domain**: Company website domain
+#### Update Prospect
+Update prospect information in ProspectPro.
 
-**Location-based Search:**
-- **City**: Dutch city (case-sensitive, official name)
-- **Province**: Dutch province (case-sensitive, official name)
-- **Postcode**: Dutch postal code
-- **Address ID**: Format: NL{postcode}-{house number} (e.g., "NL1234AB-150")
-- **Location**: Search by city/municipality with distance
-- **Geo Coordinates**: Search by latitude,longitude with distance
-- **Distance**: Radius in kilometers (use with location or geo coordinates)
+### Pageviews Resource
 
-**Company Characteristics:**
-- **Office Type**: Hoofdvestiging (main office) or Nevenvestiging (branch office)
-- **Organization Type**: Legal entity types (BV, NV, Stichting, etc.)
-- **Employees**: Number of employees (range format: 5:10, 5:, :10)
-- **Revenue**: Annual revenue (range format: 500000:1000000, 500000:, :1000000)
-- **Founded**: Year of establishment (range format: 2010:2020, 2010:, :2020)
-- **SBI Code**: Industry classification codes (comma-separated)
+#### Get Many Pageviews
+Retrieve pageview data for prospects.
 
-**Digital Presence:**
-- **Apps**: Technologies/apps used by the company
-- **Monthly Visits**: Website traffic estimates (range format)
-- **Social Exists**: Available social media channels (Facebook, Instagram, LinkedIn, etc.)
-- **Social Interactions**: Social media engagement metrics (range format)
-- **PageRank**: DomCop PageRank (0-10, range format)
-- **Crux Rank**: Crux ranking (1-50m, range format)
-- **Tranco Rank**: Tranco ranking (1-3m, range format)
+### Contacts Resource
 
-**Relationship Analysis:**
-- **Linked By**: Domains that link to the company website
-- **Link Domain**: Domains the company links to
-- **Mentioned By**: Domains that mention the company
-- **Relation**: Combination of linked_by, mentioned_by, and linkdomain
+#### Get Many Contacts
+Retrieve contact information.
 
-**Data Availability:**
-- **Data Exists**: Filter by available data types (address, email, phone, etc.)
-- **Rating**: Average review rating (0-5, range format)
-- **Reviews**: Number of reviews (range format)
+#### Create Contact
+Create a new contact in ProspectPro.
 
-**Output Control:**
-- **Rows**: Number of companies to return
+#### Update Contact
+Update existing contact information.
+
+#### Delete Contact
+Remove a contact from ProspectPro.
+
+### Events Resource
+
+#### Get Many Events
+Retrieve event data.
+
+#### Create Event
+Create a new event in ProspectPro.
+
+#### Delete Event
+Remove an event from ProspectPro.
+
+## ProspectPro Trigger Node
+
+The package also includes a trigger node that can poll for new or updated prospects. This node supports:
+
+- Filtering by qualification status
+- Filtering by tags
+- Filtering by audiences
+- Filtering by owner
+
+The trigger will automatically track the last time it ran to only retrieve new or updated prospects.
 
 ## Usage Examples
 
-### Basic Company Search
-Search for companies by keyword:
+### Basic Prospect Search
+Retrieve prospects from ProspectPro:
 ```json
 {
-  "resource": "foundation",
-  "operation": "get",
-  "country": "nl",
+  "resource": "prospects",
+  "operation": "get_many",
   "additionalFields": {
-    "text": "software development",
     "rows": 10
   }
 }
 ```
 
-### Find Companies by Location
-Search for companies in Amsterdam:
+### Create Contact for a Prospect
+Create a new contact associated with a prospect:
 ```json
 {
-  "resource": "foundation",
-  "operation": "get",
-  "country": "nl",
+  "resource": "contacts",
+  "operation": "create",
+  "prospectId": "123456",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com"
+}
+```
+
+### Retrieve Recent Pageviews
+Get recent pageviews data:
+```json
+{
+  "resource": "pageviews",
+  "operation": "get_many",
   "additionalFields": {
-    "city": "Amsterdam",
-    "orgtype": ["Besloten Vennootschap"],
-    "employees": "10:100"
+    "rows": 20,
+    "sort_by": "timestamp",
+    "sort_order": "desc"
   }
 }
 ```
 
-### Technology Company Analysis
-Find companies using specific technologies:
+### Create a Custom Event
+Log a custom event in ProspectPro:
 ```json
 {
-  "resource": "foundation",
-  "operation": "get",
-  "country": "nl",
-  "additionalFields": {
-    "apps": "Salesforce,HubSpot",
-    "social_exists": ["linkedin", "twitter"],
-    "monthly_visits": "1000:"
+  "resource": "events",
+  "operation": "create",
+  "prospectId": "123456",
+  "eventType": "meeting_scheduled",
+  "eventData": {
+    "time": "2023-05-15T14:30:00Z",
+    "notes": "Initial consultation"
   }
 }
 ```
 
-### Geographic Radius Search
-Find companies within 25km of coordinates:
+## Trigger Node Example
+Create an automated workflow that triggers when new qualified prospects are found:
 ```json
 {
-  "resource": "foundation",
-  "operation": "get",
-  "country": "nl",
-  "additionalFields": {
-    "geo": "52.3676,4.9041",
-    "distance": 25,
-    "revenue": "1000000:"
-  }
+  "label": 1,
+  "tags": ["high-value", "inbound"],
+  "owner": "12345678"
 }
 ```
-
-## Range Format
-
-Many fields support range queries with the following format:
-- **Range**: `min:max` (e.g., `100:500`)
-- **Minimum only**: `min:` (e.g., `100:`)
-- **Maximum only**: `:max` (e.g., `:500`)
 
 ## API Documentation
 
-For detailed API documentation, visit [docs.bedrijfsdata.nl](https://docs.bedrijfsdata.nl/).
+For detailed API documentation, visit [docs.prospectpro.nl](https://docs.prospectpro.nl/).
 
 ## Compatibility
 
@@ -188,7 +181,7 @@ For detailed API documentation, visit [docs.bedrijfsdata.nl](https://docs.bedrij
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-- [Bedrijfsdata.nl API Documentation](https://docs.bedrijfsdata.nl/)
+- [ProspectPro API Documentation](https://docs.prospectpro.nl/)
 
 ## Development
 
@@ -201,7 +194,7 @@ For detailed API documentation, visit [docs.bedrijfsdata.nl](https://docs.bedrij
 
 ```bash
 # Clone the repository
-git clone https://github.com/OohBen/n8n-bedrijfsdata-custom-node.git
+git clone [your-repository-url]
 
 # Install dependencies
 npm install
@@ -211,9 +204,6 @@ npm run build
 
 # Lint the code
 npm run lint
-
-# Auto-fix linting issues
-npm run lintfix
 ```
 
 ### Testing
@@ -222,7 +212,7 @@ To test the node locally:
 
 1. Build the node: `npm run build`
 2. Link it to your global n8n installation: `npm link`
-3. In your n8n directory: `npm link n8n-nodes-bedrijfsdata`
+3. In your n8n directory: `npm link n8n-nodes-prospectpro`
 4. Start n8n: `n8n start`
 
 OR
@@ -230,10 +220,6 @@ OR
 ```bash
 ./run.sh
 ```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
@@ -243,6 +229,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you encounter any issues or have questions:
 
-1. Check the [Bedrijfsdata.nl API documentation](https://docs.bedrijfsdata.nl/)
+1. Check the [ProspectPro API documentation](https://docs.prospectpro.nl/)
 2. Review the [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 3. Open an issue in this repository

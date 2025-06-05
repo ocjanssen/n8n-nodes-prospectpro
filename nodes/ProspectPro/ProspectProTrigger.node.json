@@ -1,0 +1,22 @@
+{
+  "node": "n8n-nodes-base.prospectProTrigger",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Trigger",
+    "Marketing",
+    "Sales"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://docs.prospectpro.nl/"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://docs.prospectpro.nl/"
+      }
+    ]
+  }
+}

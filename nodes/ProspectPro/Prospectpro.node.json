@@ -1,19 +1,20 @@
 {
-	"node": "n8n-nodes-base.Bedrijfsdata",
+	"node": "n8n-nodes-base.ProspectPro",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
-		"Miscellaneous"
+		"Marketing",
+        "Sales"
 	],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://docs.bedrijfsdata.nl/"
+				"url": "https://docs.prospectpro.nl/"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.bedrijfsdata.nl/"
+				"url": "https://docs.prospectpro.nl/"
 			}
 		]
 	}

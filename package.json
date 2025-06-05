@@ -1,10 +1,10 @@
 {
-  "name": "n8n-nodes-bedrijfsdata",
+  "name": "n8n-nodes-prospectpro",
   "version": "1.0.0",
-  "description": "n8n node for Bedrijfsdata.nl API - Search and retrieve Dutch company information",
+  "description": "n8n node for ProspectPro - Identify Dutch B2B ProspectPro in rapid time",
   "keywords": [
     "n8n-community-node-package",
-    "bedrijfsdata",
+    "prospectpro",
     "dutch-companies",
     "company-data",
     "netherlands",
@@ -12,14 +12,14 @@
     "api-integration"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/OohBen/n8n-bedrijfsdata-custom-node#readme",
+  "homepage": "https://github.com/OohBen/n8n-nodes-prospectpro#readme",
   "author": {
-    "name": "Bedrijfsdata",
+    "name": "ProspectPro",
     "email": "info@ocjanssen.nl"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OohBen/n8n-bedrijfsdata-custom-node.git"
+    "url": "https://github.com/OohBen/n8n-nodes-prospectpro.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -39,10 +39,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/bedrijfsdataApi.credentials.js"
+      "dist/credentials/prospectproApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Bedrijfsdata/Bedrijfsdata.node.js"
+      "dist/nodes/ProspectPro/Prospectpro.node.js",
+      "dist/nodes/ProspectPro/ProspectProTrigger.node.js"
     ]
   },
   "devDependencies": {

@@ -6,11 +6,11 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class bedrijfsdataApi implements ICredentialType {
+export class prospectproApi implements ICredentialType {
 	icon = 'file:logo.svg' as Icon;
-	name = 'bedrijfsdataApi';
-	displayName = 'Bedrijfsdata API';
-	documentationUrl = 'https://docs.bedrijfsdata.nl/';
+	name = 'prospectproApi';
+	displayName = 'ProspectPro API';
+	documentationUrl = 'https://docs.prospectpro.nl/';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
@@ -27,18 +27,17 @@ export class bedrijfsdataApi implements ICredentialType {
 		properties: {
 			qs: {
 				'api_key': '={{$credentials.apiKey}}'
-			}
+			},
 		},
 	};
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://api.bedrijfsdata.nl/v1.1',
+			baseURL: 'https://api.prospectpro.nl/v1.2',
 			method: 'GET',
-			url: '/companies',
+			url: '/prospects',
 			qs: {
-				country: 'nl',
-				rows: 0,
 				front: 30,
+                rows: 0
 			}
 		},
 	};
