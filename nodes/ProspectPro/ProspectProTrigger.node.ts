@@ -18,10 +18,10 @@ import {
     apiRequest,
 } from './GenericFunctions';
 
-export class ProspectProTrigger implements INodeType {
+export class ProspectproTrigger implements INodeType {
     description: INodeTypeDescription = {
         displayName: 'ProspectPro Trigger',
-        name: 'prospectProTrigger',
+        name: 'prospectproTrigger',
         icon: 'file:logo.svg',
         group: ['trigger'],
         version: 1,
@@ -188,7 +188,7 @@ export class ProspectProTrigger implements INodeType {
                 return changedTime && changedTime > lastPolledTimeSeconds!;
             });
         }
-        
+
         if (newLastPolledTimeSeconds > lastPolledTimeSeconds) {
             workflowData.lastPolledTimeSeconds = newLastPolledTimeSeconds;
         } else {
