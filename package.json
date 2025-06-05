@@ -12,14 +12,14 @@
     "api-integration"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/OohBen/n8n-nodes-prospectpro#readme",
+  "homepage": "https://www.prospectpro.nl/",
   "author": {
     "name": "ProspectPro",
     "email": "info@ocjanssen.nl"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OohBen/n8n-nodes-prospectpro.git"
+    "url": "https://github.com/ocjanssen/n8n-nodes-prospectpro"
   },
   "engines": {
     "node": ">=20.15"
@@ -31,7 +31,7 @@
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm build && npm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
   },
   "files": [
     "dist"

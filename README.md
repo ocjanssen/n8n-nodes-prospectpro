@@ -232,3 +232,5 @@ If you encounter any issues or have questions:
 1. Check the [ProspectPro API documentation](https://docs.prospectpro.nl/)
 2. Review the [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 3. Open an issue in this repository
+
+[ProspectPro](https://www.prospectpro.nl/) is a part of [Bedrijfsdata.nl](https://www.bedrijfsdata.nl/)
