@@ -22,7 +22,7 @@ import { eventsGetManyOperationProperties } from './EventsGetMany.properties';
 import { eventsCreateOperationProperties } from './EventsCreate.properties';
 import { eventsDeleteOperationProperties } from './EventsDelete.properties';
 
-export class ProspectPro implements INodeType {
+export class Prospectpro implements INodeType {
 	description: INodeTypeDescription = {
 		name: 'prospectpro',
 		displayName: 'ProspectPro',

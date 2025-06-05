@@ -1,11 +1,12 @@
 {
-	"node": "n8n-nodes-base.ProspectPro",
+	"node": "n8n-nodes-base.Prospectpro",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
 		"Marketing",
         "Sales"
 	],
+	
 	"resources": {
 		"credentialDocumentation": [
 			{
