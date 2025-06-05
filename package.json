@@ -43,7 +43,7 @@
     ],
     "nodes": [
       "dist/nodes/ProspectPro/Prospectpro.node.js",
-      "dist/nodes/ProspectPro/ProspectProTrigger.node.js"
+      "dist/nodes/ProspectPro/ProspectproTrigger.node.js"
     ]
   },
   "devDependencies": {

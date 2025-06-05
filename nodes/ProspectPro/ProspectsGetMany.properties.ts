@@ -35,18 +35,85 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
         },
 		options: [
             {
-                displayName: 'Search',
-                name: 'search',
-                type: 'string',
-                default: '',
+                displayName: 'Audience Names or IDs',
+                name: 'audiences',
+                type: 'multiOptions',
+                typeOptions: {
+                    loadOptionsMethod: 'getAudiences',
+                },
+                default: [],
+                description: 'Filter Prospects by Audience. Select multiple by clicking again. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
                 routing: {
                     request: {
                         qs: {
-                            search: '={{ $value ? $value : undefined }}',
+                            lists: '={{ $value.length > 0 ? $value.join(",") : undefined }}',
                         },
                     },
                 },
-                description: 'Search Prospects by keyword',
+            },
+            {
+                displayName: 'Contacts',
+                name: 'total_contacts',
+                type: 'options',
+                default: '666',
+                options: [
+                    { name: 'All', value: '666' },
+                    { name: 'With Contacts', value: '1' },
+                    { name: 'Without Contacts', value: '0:0' },
+                ],
+                routing: {
+                    request: {
+                        qs: {
+                            total_contacts: '={{ $value && $value !== "666" ? $value : undefined }}',
+                        },
+                    },
+                },
+                description: 'Filter Prospects by contacts',
+            },
+            {
+                displayName: 'Created Since',
+                name: 'from_inserted_date',
+                type: 'dateTime',
+                default: '',
+                description: 'Get Prospects created since a specific date and time',
+                routing: {
+                    request: {
+                        qs: {
+                            from_inserted_date: '={{ $value ? Math.floor(new Date($value).getTime() / 1000) : undefined }}',
+                        },
+                    },
+                },
+            },
+            {
+                displayName: 'Modified Since',
+                name: 'from_changed_time',
+                type: 'dateTime',
+                default: '',
+                description: 'Get Prospects modified since a specific date and time',
+                routing: {
+                    request: {
+                        qs: {
+                            from_changed_time: '={{ $value ? Math.floor(new Date($value).getTime() / 1000) : undefined }}',
+                        },
+                    },
+                },
+            },
+            {
+                displayName: 'Owners Name or ID',
+                name: 'owner',
+                type: 'options',
+                typeOptions: {
+                    loadOptionsMethod: 'getOwners',
+                },
+                default: '',
+                description: 'Filter Prospects by owner. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+                routing: {
+                    request: {
+                        qs: {
+                            owner: '={{ $value ? $value : undefined }}',
+                        },
+                    },
+                },
             },
             {
                 displayName: 'Qualification Status',
@@ -69,6 +136,20 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
                 description: 'Filter Prospects by their qualification status',
             },
             {
+                displayName: 'Search',
+                name: 'search',
+                type: 'string',
+                default: '',
+                routing: {
+                    request: {
+                        qs: {
+                            search: '={{ $value ? $value : undefined }}',
+                        },
+                    },
+                },
+                description: 'Search Prospects by keyword',
+            },
+            {
                 displayName: 'Tag Names or IDs',
                 name: 'tags',
                 type: 'multiOptions',
@@ -81,23 +162,6 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
                     request: {
                         qs: {
                             tags: '={{ $value.length > 0 ? $value.join(",") : undefined }}',
-                        },
-                    },
-                },
-            },
-            {
-                displayName: 'Audience IDs',
-                name: 'audiences',
-                type: 'multiOptions',
-                typeOptions: {
-                    loadOptionsMethod: 'getAudiences',
-                },
-                default: [],
-                description: 'Filter Prospects by Audience. Select multiple by clicking again. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
-                routing: {
-                    request: {
-                        qs: {
-                            lists: '={{ $value.length > 0 ? $value.join(",") : undefined }}',
                         },
                     },
                 },
@@ -120,71 +184,7 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
                     },
                 },
                 description: 'Filter Prospects by website visits',
-            },
-            {
-                displayName: 'Contacts',
-                name: 'total_contacts',
-                type: 'options',
-                default: '666',
-                options: [
-                    { name: 'All', value: '666' },
-                    { name: 'With Contacts', value: '1' },
-                    { name: 'Without Contacts', value: '0:0' },
-                ],
-                routing: {
-                    request: {
-                        qs: {
-                            total_contacts: '={{ $value && $value !== "666" ? $value : undefined }}',
-                        },
-                    },
-                },
-                description: 'Filter Prospects by contacts',
-            },
-            {
-                displayName: 'Owners Name or ID',
-                name: 'owner',
-                type: 'options',
-                typeOptions: {
-                    loadOptionsMethod: 'getOwners',
-                },
-                default: '',
-                description: 'Filter Prospects by owner. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
-                routing: {
-                    request: {
-                        qs: {
-                            owner: '={{ $value ? $value : undefined }}',
-                        },
-                    },
-                },
-            },
-            {
-                displayName: 'Modified Since',
-                name: 'from_changed_time',
-                type: 'dateTime',
-                default: '',
-                description: 'Get Prospects modified since a specific date and time',
-                routing: {
-                    request: {
-                        qs: {
-                            from_changed_time: '={{ $value ? Math.floor(new Date($value).getTime() / 1000) : undefined }}',
-                        },
-                    },
-                },
-            },
-            {
-                displayName: 'Created Since',
-                name: 'from_inserted_date',
-                type: 'dateTime',
-                default: '',
-                description: 'Get Prospects created since a specific date and time',
-                routing: {
-                    request: {
-                        qs: {
-                            from_inserted_date: '={{ $value ? Math.floor(new Date($value).getTime() / 1000) : undefined }}',
-                        },
-                    },
-                },
-            },
+            }
         ],
     },
     {
