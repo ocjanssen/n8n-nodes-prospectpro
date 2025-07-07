@@ -1,6 +1,6 @@
 {
   "name": "@bedrijfsdatanl/n8n-nodes-prospectpro",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "n8n node for ProspectPro - Identify Dutch B2B ProspectPro in rapid time",
   "keywords": [
     "n8n-community-node-package",
