@@ -45,7 +45,7 @@ export class ProspectproTrigger implements INodeType {
 				name: 'event',
 				type: 'options',
 				description:
-					"Triggered when a prospect is added or updated.",
+					"Triggered when a prospect is added or updated",
 				options: [
 					{
 						name: 'Prospect Added or Updated',
@@ -92,7 +92,6 @@ export class ProspectproTrigger implements INodeType {
                 displayName: 'Owner Name or ID',
                 name: 'owner',
                 type: 'options',
-                required: false,
                 typeOptions: {
                     loadOptionsMethod: 'getOwners',
                 },
