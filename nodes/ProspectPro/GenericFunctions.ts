@@ -6,7 +6,7 @@ import type {
 	ILoadOptionsFunctions,
 	INodePropertyOptions,
     IPollFunctions,
-	IRequestOptions,
+	IHttpRequestOptions,
 } from 'n8n-workflow';
 
 import {
@@ -23,18 +23,18 @@ export async function apiRequest(
 	query = query || {};
 	query.front = 30;
 
-	const options: IRequestOptions = {
+	const options: IHttpRequestOptions = {
 		method,
 		body,
 		qs: query,
-		uri: `https://api.prospectpro.nl/v1.2/${endpoint.startsWith('/') ? endpoint.substring(1) : endpoint}`,
+		url: `https://api.prospectpro.nl/v1.2/${endpoint.startsWith('/') ? endpoint.substring(1) : endpoint}`,
 		json: true,
 	};
 
 	if (method === 'GET') {
 		delete options.body;
 	}
-	return await this.helpers.requestWithAuthentication.call(this, 'prospectproApi', options);
+	return await this.helpers.httpRequestWithAuthentication.call(this, 'prospectproApi', options);
 }
 
 export async function getProspectProTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
@@ -113,7 +113,7 @@ export async function getProspectProOwners(this: ILoadOptionsFunctions): Promise
 		if (response.status === 'ok' && response?.users?.length > 0) {
 			return response.users.map(user => ({
 				name: user.email || user.name || user.uid,
-				value: user.uid,
+				value: user.email,
 			}));
 		} else {
 			const errorMessage = response?.message || 'Unexpected API response from /user endpoint (for owners)';

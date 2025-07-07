@@ -36,6 +36,7 @@ export class Prospectpro implements INodeType {
 		},
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
+        usableAsTool: true,
 		credentials: [
 			{
 				name: 'prospectproApi',
