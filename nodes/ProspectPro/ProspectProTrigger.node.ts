@@ -91,19 +91,68 @@ export class ProspectproTrigger implements INodeType {
 				},
             },
             {
-                displayName: 'Tag Names or IDs',
+                displayName: 'Tags to Include',
                 name: 'tags',
                 type: 'multiOptions',
                 typeOptions: {
                     loadOptionsMethod: 'getTags',
                 },
                 default: [],
-                description: 'Filter Prospects by Tags. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+                description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 				displayOptions: {
 					show: {
 						event: ['prospectUpsert', 'prospectInsert'],
 					},
 				},
+            },
+            {
+                displayName: 'Tags to Exclude',
+                name: 'not_tags',
+                type: 'multiOptions',
+                typeOptions: {
+                    loadOptionsMethod: 'getTags',
+                },
+                default: [],
+                description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+				displayOptions: {
+					show: {
+						event: ['prospectUpsert', 'prospectInsert'],
+					},
+				},
+            },
+            {
+                displayName: 'Website Visits',
+                name: 'total_visits',
+                type: 'options',
+                default: '666',
+                options: [
+                    { name: 'All', value: '666' },
+                    { name: 'With Website Visits', value: '1' },
+                    { name: 'Without Website Visits', value: '0:0' },
+                ],
+                displayOptions: {
+					show: {
+						event: ['prospectUpsert', 'prospectInsert'],
+					},
+				},
+                description: 'Filter Prospects by website visits',
+            },
+            {
+                displayName: 'Contacts',
+                name: 'total_contacts',
+                type: 'options',
+                default: '666',
+                options: [
+                    { name: 'All', value: '666' },
+                    { name: 'With Contacts', value: '1' },
+                    { name: 'Without Contacts', value: '0:0' },
+                ],
+                displayOptions: {
+					show: {
+						event: ['prospectUpsert', 'prospectInsert'],
+					},
+				},
+                description: 'Filter Prospects by contacts',
             },
             {
                 displayName: 'Audience Names or IDs',
@@ -178,7 +227,7 @@ export class ProspectproTrigger implements INodeType {
 			useInsertedTime = false,
 			lastSeenIds: string[] = []
 		): Promise<IDataObject[]> => {
-			const maxRows = (isManualMode || !fromTime) ? 5 : 500;
+			const maxRows = (isManualMode || !fromTime) ? 5 : 100;
 
 			const qs: IDataObject = {
 				no_header: 1,
@@ -210,6 +259,15 @@ export class ProspectproTrigger implements INodeType {
 
 				const owner = this.getNodeParameter('owner', '') as string;
 				if (owner !== '') qs.owner = owner;
+
+                const total_contacts = this.getNodeParameter('total_contacts', '666') as string;
+				if (total_contacts !== '666') qs.total_contacts = total_contacts;
+
+                const total_visits = this.getNodeParameter('total_visits', '666') as string;
+				if (total_visits !== '666') qs.total_visits = total_visits;
+
+                const not_tags = this.getNodeParameter('not_tags', []) as string[];
+				if (not_tags.length > 0) qs.NOT_tags = not_tags.join(',');
 			} else {
 				const companyId = this.getNodeParameter('companyId', '') as string;
 				if (companyId !== '') qs.company_id = companyId;

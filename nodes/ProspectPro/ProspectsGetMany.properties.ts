@@ -150,14 +150,31 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
                 description: 'Search Prospects by keyword',
             },
             {
-                displayName: 'Tag Names or IDs',
+                displayName: 'Tags to Exclude',
+                name: 'not_tags',
+                type: 'multiOptions',
+                typeOptions: {
+                    loadOptionsMethod: 'getTags',
+                },
+                default: [],
+                description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+                routing: {
+                    request: {
+                        qs: {
+                            NOT_tags: '={{ $value.length > 0 ? $value.join(",") : undefined }}',
+                        },
+                    },
+                },
+            },
+            {
+                displayName: 'Tags to Include',
                 name: 'tags',
                 type: 'multiOptions',
                 typeOptions: {
                     loadOptionsMethod: 'getTags',
                 },
                 default: [],
-                description: 'Filter Prospects by Tags. Select multiple by clicking again. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+                description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
                 routing: {
                     request: {
                         qs: {
@@ -256,9 +273,9 @@ export const prospectsGetManyOperationProperties: INodeProperties[] = [
                 displayName: 'Results per Page',
                 name: 'limit',
                 type: 'number',
-																typeOptions: {
-																	minValue: 1,
-																},
+                typeOptions: {
+                    minValue: 1,
+                },
                 default: 50,
                 routing: {
                     request: {
